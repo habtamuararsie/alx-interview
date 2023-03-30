@@ -13,8 +13,7 @@ A README.md file, at the root of the folder of the project, is mandatory
 Your code should be documented
 Your code should use the PEP 8 style (version 1.7.x)
 All your files must be executable
-Tasks
-0. Lockboxes
+Tasks 0. Lockboxes
 mandatory
 
 You have n number of locked boxes in front of you. Each box is numbered sequentially from 0 to n - 1 and each box may contain keys to the other boxes.
@@ -31,7 +30,7 @@ Return True if all boxes can be opened, else return False
 carrie@ubuntu:~/0x01-lockboxes$ cat main_0.py
 #!/usr/bin/python3
 
-canUnlockAll = __import__('0-lockboxes').canUnlockAll
+canUnlockAll = **import**('0-lockboxes').canUnlockAll
 
 boxes = [[1], [2], [3], [4], []]
 print(canUnlockAll(boxes))
