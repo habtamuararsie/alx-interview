@@ -1,57 +1,52 @@
 #!/usr/bin/python3
-"""  a script that reads stdin line by line and computes metrics
-Input format: <IP Address> - [<date>] "GET /projects/260 HTTP/1.1"
-<status code> <file size>
-"""
+
+'''
+Reads stdin line by line and computes metrics
+'''
 import sys
 
+if __name__ == "__main__":
 
-def display_message(dictionary_source, file_size):
-    """
-    Method to display
-    Args:
-        dictionary_source: dict of status codes
-        file_size: total of the file
-    Returns:
-        Nothing to display
-    """
+    status_codes = {200: 0, 301: 0, 400: 0, 401: 0,
+                    403: 0, 404: 0, 405: 0, 500: 0}
+    file_size = [0]
+    count = 1
 
-    print("File size: {}".format(file_size))
-    for key, val in sorted(dictionary_source.items()):
-        if val != 0:
-            print("{}: {}".format(key, val))
+    def print_stats():
+        '''
+        Prints file size and stats for every 10 loops
+        '''
+        print('File size: {}'.format(file_size[0]))
 
+        for code in sorted(status_codes.keys()):
+            if status_codes[code] != 0:
+                print('{}: {}'.format(code, status_codes[code]))
 
-T_file_size = 0
-message_code = 0
-count = 0
-dictonary_src = {"200": 0,
-           "301": 0,
-           "400": 0,
-           "401": 0,
-           "403": 0,
-           "404": 0,
-           "405": 0,
-           "500": 0}
+    def parse_stdin(line):
+        '''
+        Checks the stdin for matches
+        '''
+        try:
+            line = line[:-1]
+            word = line.split(' ')
+            # File size is last parameter on stdout
+            file_size[0] += int(word[-1])
+            # Status code comes before file size
+            status_code = int(word[-2])
+            # Move through dictionary of status codes
+            if status_code in status_codes:
+                status_codes[status_code] += 1
+        except BaseException:
+            pass
 
-try:
-    for lines in sys.stdin:
-        pars_line = lines.split()  
-        pars_line = pars_line[::-1] 
-
-        if len(pars_line) > 2:
+    try:
+        for line in sys.stdin:
+            parse_stdin(line)
+            # print the stats after every 10 outputs
+            if count % 10 == 0:
+                print_stats()
             count += 1
-
-            if count <= 10:
-                T_file_size += int(pars_line[0]) 
-                message_code = pars_line[1] 
-
-                if (message_code in dictonary_src.keys()):
-                    dictonary_src[message_code] += 1
-
-            if (count == 10):
-                display_message(dictonary_src, T_file_size)
-                count = 0
-
-finally:
-    display_message(dictonary_src, T_file_size)
+    except KeyboardInterrupt:
+        print_stats()
+        raise
+    print_stats()
