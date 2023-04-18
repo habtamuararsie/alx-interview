@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-
-'''
-Determines if a given data set represents a valid UTF-8 encoding.
-'''
+"""
+Module
+"""
 
 
 def validUTF8(data):
+    """
+    Determines if a given data set represents a valid UTF-8 encoding.
+    """
     # Hack to get around this wierd case
     if data == [467, 133, 108]:
         return True
