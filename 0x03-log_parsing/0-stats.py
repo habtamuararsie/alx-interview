@@ -3,18 +3,19 @@
 Input format: <IP Address> - [<date>] "GET /projects/260 HTTP/1.1"
 <status code> <file size>
 """
-import sys
 
+if __name__ == '__main__':
+    import sys
 
-def display_message(status, fileSize):
-    """
-    Method to display
-    Args:
-        dictionary_source: dict of status codes
-        file_size: total of the file
-    Returns:
-        Nothing to display
-    """
+    def display_message(status, fileSize):
+        """
+        Method to display
+        Args:
+            dictionary_source: dict of status codes
+            file_size: total of the file
+        Returns:
+            Nothing to display
+        """
 
 
 try:
@@ -25,8 +26,8 @@ try:
 except Exception:
     pass
 
-
-
+fileSize = 0
+message_code = 0
 count = 0
 status = {"200": 0,
           "301": 0,
@@ -36,8 +37,7 @@ status = {"200": 0,
           "404": 0,
           "405": 0,
           "500": 0}
-fileSize = 0
-message_code = 0
+
 try:
     """ Read stdin line by line """
     for line in sys.stdin:
