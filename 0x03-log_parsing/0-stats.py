@@ -4,18 +4,19 @@ Input format: <IP Address> - [<date>] "GET /projects/260 HTTP/1.1"
 <status code> <file size>
 """
 
-if __name__ == '__main__':
-    import sys
 
-    def display_message(status, fileSize):
-        """
-        Method to display
-        Args:
-            dictionary_source: dict of status codes
-            file_size: total of the file
-        Returns:
-            Nothing to display
-        """
+import sys
+
+
+def display_message(status, fileSize):
+    """
+    Method to display
+    Args:
+        dictionary_source: dict of status codes
+        file_size: total of the file
+    Returns:
+        Nothing to display
+    """
 
 
 try:
