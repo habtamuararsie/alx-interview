@@ -26,8 +26,7 @@ except Exception:
     pass
 
 
-fileSize = 0
-message_code = 0
+
 count = 0
 status = {"200": 0,
           "301": 0,
@@ -37,10 +36,12 @@ status = {"200": 0,
           "404": 0,
           "405": 0,
           "500": 0}
-
+fileSize = 0
+message_code = 0
 try:
-    for lines in sys.stdin:
-        pars_line = lines.split()
+    """ Read stdin line by line """
+    for line in sys.stdin:
+        pars_line = line.split()
         pars_line = pars_line[::-1]
 
         if len(pars_line) > 2:
