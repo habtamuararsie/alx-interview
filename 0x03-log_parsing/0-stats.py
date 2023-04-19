@@ -6,7 +6,7 @@ Input format: <IP Address> - [<date>] "GET /projects/260 HTTP/1.1"
 import sys
 
 
-def display_message(dictionary_source, file_size):
+def display_message(dictionary_src, file_size):
     """
     Method to display
     Args:
@@ -17,7 +17,7 @@ def display_message(dictionary_source, file_size):
     """
 
     print("File size: {}".format(file_size))
-    for key, val in sorted(dictionary_source.items()):
+    for key, val in sorted(dictionary_src.items()):
         if val != 0:
             print("{}: {}".format(key, val))
 
