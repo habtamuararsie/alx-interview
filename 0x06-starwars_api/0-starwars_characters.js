@@ -1,45 +1,22 @@
 #!/usr/bin/node
+
 const request = require('request');
-const filmId = process.argv.slice(1)[1];
+const filmId = process.argv[2];
+const url = `https://swapi-api.hbtn.io/api/films/${filmId}`;
 
-(function () {
-  if (!filmId || isNaN(parseInt(filmId))) {
-    return;
+request(url, async (err, response, body) => {
+  if (err) {
+    console.log(err);
   }
-
-  const getName = (character) =>
-    new Promise((resolve, reject) => {
-      request(
-        {
-          method: 'GET',
-          uri: character,
-          json: true
-        },
-        function (error, response, body) {
-          if (response.statusCode !== 200) {
-            console.error(error);
-          }
-          const { name } = body;
-          resolve(name);
+  for (const characterId of JSON.parse(body).characters) {
+    await new Promise((resolve, reject) => {
+      request(characterId, (err, response, body) => {
+        if (err) {
+          reject(err);
         }
-      );
+        console.log(JSON.parse(body).name);
+        resolve();
+      });
     });
-
-  request(
-    {
-      method: 'GET',
-      uri: `https://swapi-api.hbtn.io/api/films/${filmId}/`,
-      json: true
-    },
-    async function (error, response, body) {
-      if (response.statusCode !== 200) {
-        console.error(error);
-      }
-      const { characters } = body;
-      for (let i = 0; i < characters.length; i++) {
-        const name = await getName(characters[i]);
-        console.log(name);
-      }
-    }
-  );
-})();
+  }
+});
