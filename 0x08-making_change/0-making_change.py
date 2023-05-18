@@ -7,6 +7,7 @@ A modul which solves coin problem
 def makeChange(coins, total):
     """
     fewest number of coins needed to meet total
+    
     """
     if total <= 0:
         return 0
