@@ -6,6 +6,7 @@ def makeChange(coins, total):
     """
     number of coins needed to meet a given total coin number if total 
     """
+    
     if total <= 0:
         return 0
 
