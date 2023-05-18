@@ -9,6 +9,7 @@ def makeChange(coins, total):
     A function which returns fewest number of coins needed to
     meet a given total coin number if total is not less than 0
     '''
+    
     if total <= 0:
         return 0
 
