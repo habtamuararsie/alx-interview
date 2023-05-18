@@ -1,12 +1,14 @@
 #!/usr/bin/python3
-"""" A modul which solves coin problem """
+"""" 
+A modul which solves coin problem 
+"""
 
 
 def makeChange(coins, total):
     """
-    number of coins needed to meet a given total coin number if total 
+    determine the number of coins needed to meet a given 
+    total coin number if total 
     """
-    
     if total <= 0:
         return 0
 
