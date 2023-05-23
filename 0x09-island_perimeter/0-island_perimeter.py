@@ -16,11 +16,12 @@ def island_perimeter(grid):
     perimeter = 0
     for a in range(height):
         for b in range(width):
+            
             if grid[a][b] == 1:
                 perimeter += 4
                 if a > 0 and grid[a - 1][b] == 1:
                     perimeter -= 2
                 if b > 0 and grid[a][b - 1] == 1:
                     perimeter -= 2
-                    
+
     return perimeter
