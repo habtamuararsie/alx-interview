@@ -1,14 +1,15 @@
 #!/usr/bin/python3
-'''
+""""
 Solution module for island perimeter
-'''
+"""
 
 
 def island_perimeter(grid):
-    '''
+    
+    """"
     A function which calculats and return the perimeter
     of island in given grid
-    '''
+    """
     width = len(grid[0])
     height = len(grid)
     perimeter = 0
