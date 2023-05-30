@@ -4,12 +4,14 @@
 
 
 def isWinner(x, nums):
+
     """x - rounds
     nums - numbers list
     """
 
     if x <= 0 or nums is None:
         return None
+    
     if x != len(nums):
         return None
 
@@ -18,7 +20,7 @@ def isWinner(x, nums):
 
     c = [1 for x in range(sorted(nums)[-1] + 1)]
     c[0], c[1] = 0, 0
-    
+
     for j in range(2, len(c)):
 
         rm_multiples(c, j)
@@ -37,9 +39,11 @@ def isWinner(x, nums):
 
 
 def rm_multiples(ls, x):
+
     """removes multiple
     of primes
     """
+
     for j in range(2, len(ls)):
 
         try:
