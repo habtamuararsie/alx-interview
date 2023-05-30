@@ -40,7 +40,7 @@ def rm_multiples(ls, x):
     of primes
     """
     for i in range(2, len(ls)):
-        
+
         try:
             ls[i * x] = 0
         except (ValueError, IndexError):
