@@ -4,15 +4,16 @@
 
 
 def isWinner(x, nums):
-
     """x - rounds
     nums - numbers list
     """
 
     if x <= 0 or nums is None:
+
         return None
-    
+
     if x != len(nums):
+
         return None
 
     ben = 0
@@ -31,15 +32,16 @@ def isWinner(x, nums):
             ben += 1
         else:
             maria += 1
+
     if ben > maria:
         return "Ben"
+
     if maria > ben:
         return "Maria"
     return None
 
 
 def rm_multiples(ls, x):
-
     """removes multiple
     of primes
     """
