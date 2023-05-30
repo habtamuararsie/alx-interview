@@ -16,15 +16,16 @@ def isWinner(x, nums):
     ben = 0
     maria = 0
 
-    a = [1 for x in range(sorted(nums)[-1] + 1)]
-    a[0], a[1] = 0, 0
-    for i in range(2, len(a)):
+    c = [1 for x in range(sorted(nums)[-1] + 1)]
+    c[0], c[1] = 0, 0
+    
+    for j in range(2, len(c)):
 
-        rm_multiples(a, i)
+        rm_multiples(c, j)
 
-    for i in nums:
+    for j in nums:
 
-        if sum(a[0:i + 1]) % 2 == 0:
+        if sum(c[0:j + 1]) % 2 == 0:
             ben += 1
         else:
             maria += 1
@@ -39,9 +40,9 @@ def rm_multiples(ls, x):
     """removes multiple
     of primes
     """
-    for i in range(2, len(ls)):
+    for j in range(2, len(ls)):
 
         try:
-            ls[i * x] = 0
+            ls[j * x] = 0
         except (ValueError, IndexError):
             break
